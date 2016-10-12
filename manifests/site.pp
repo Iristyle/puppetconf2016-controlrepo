@@ -30,3 +30,9 @@ node default {
   # Example:
   #   class { 'my_class': }
 }
+
+node 'loadbalancer' {
+  profile::loadbalancer { 'empty_loadbalancer':
+    balancermembers => [],
+  }
+}
