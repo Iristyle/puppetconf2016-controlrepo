@@ -17,9 +17,12 @@ mod "puppet/windowsfeature", '2.0.0'
 
 # Modules from Git
 # Examples: https://github.com/puppetlabs/r10k/blob/master/doc/puppetfile.mkd#examples
-#mod 'apache',
-#  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',
-#  :commit => '83401079053dca11d61945bd9beef9ecf7576cbf'
+
+# custom fork of Choco simple server module that uses DSC instead of puppet/iis
+# as that modules requires powershell module < 2
+mod 'chocolatey_server',
+  :git => 'https://github.com/Iristyle/puppet-chocolatey_server',
+  :commit => '772707df3b47917628f485ecbd65cce6a4fc978b'
 
 #mod 'apache',
 #  :git    => 'https://github.com/puppetlabs/puppetlabs-apache',

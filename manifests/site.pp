@@ -36,3 +36,7 @@ node 'loadbalancer' {
     balancermembers => [],
   }
 }
+
+node 'win2012-choco' {
+  include role::chocolatey_server
+}
