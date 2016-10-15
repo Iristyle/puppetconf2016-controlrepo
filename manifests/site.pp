@@ -36,11 +36,14 @@ node 'win2012-choco' {
 }
 
 site {
-  simple { 'puppylabs':
+  puppylabs_app { 'puppylabs':
     version      => '0.0.1',
     nodes        => {
       Node['loadbalancer.vm'] => Profile::Loadbalancer['puppylabs'],
-      Node['win2012-web-green-1'] => Profile::App['puppylabs'],
+      Node['win2012-web-green-1'] => Profile::App['puppylabs-green-1'],
+      Node['win2012-web-green-2'] => Profile::App['puppylabs-green-2'],
+      Node['win2012-web-blue-1'] => Profile::App['puppylabs-blue-1'],
+      Node['win2012-web-blue-2'] => Profile::App['puppylabs-blue-2'],
     }
   }
 }
