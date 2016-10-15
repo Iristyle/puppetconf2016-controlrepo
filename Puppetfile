@@ -11,6 +11,7 @@ mod "puppetlabs/reboot", '1.2.1'
 mod "puppetlabs/acl", '1.1.2'
 mod "puppetlabs/powershell", '2.0.3'
 mod "puppetlabs/registry", '1.1.3'
+mod "puppetlabs/app_modeling", '0.2.0'
 
 # community modules
 mod "puppet/windowsfeature", '2.0.0'

@@ -31,27 +31,16 @@ node default {
   #   class { 'my_class': }
 }
 
-node 'loadbalancer' {
-  profile::loadbalancer { 'empty_loadbalancer':
-    balancermembers => [
-      {
-        host => 'win2012-web-green-1',
-        # uh-oh, how do we get this dynamically?
-        # well, we could use exported resources, but thats a bit complicated
-        # / hard to enforce ordering
-        # ip => '',
-        port => '80'
-      }
-    ],
-  }
-}
-
 node 'win2012-choco' {
   include role::chocolatey_server
 }
 
-node /^win2012-web-.*$/ {
-  profile::app { 'puppylabs':
-    version => '0.0.1',
+site {
+  simple { 'puppylabs':
+    version      => '0.0.1',
+    nodes        => {
+      Node['loadbalancer.vm'] => Profile::Loadbalancer['puppylabs'],
+      Node['win2012-web-green-1'] => Profile::App['puppylabs'],
+    }
   }
 }

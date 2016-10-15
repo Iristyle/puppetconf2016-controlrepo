@@ -101,3 +101,11 @@ define profile::app (
   #   require => Dsc_xwebapppool[$app_pool],
   # }
 }
+
+Profile::App produces Http {
+  # TODO: simpler for Windows? ip   => $ipaddress,
+  ip   => $interface ? { /\S+/ => $::networking['interfaces'][$interface]['ip'], default => $::ipaddress },
+  port => $port,
+  host => $::fqdn,
+  status_codes => [200, 302],
+}
