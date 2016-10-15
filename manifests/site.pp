@@ -38,6 +38,7 @@ node 'win2012-choco' {
 site {
   puppylabs_app { 'puppylabs':
     version      => '0.0.1',
+    cluster_name => 'blue',
     nodes        => {
       Node['loadbalancer.vm'] => Profile::Loadbalancer['puppylabs'],
       Node['win2012-web-green-1'] => Profile::App['puppylabs-green-1'],

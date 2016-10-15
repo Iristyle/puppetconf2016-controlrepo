@@ -5,6 +5,7 @@ define profile::app (
   $port          = 80,
   $lb_port       = 80,
   $version       = '',
+  $cluster_name  = '',
 ){
 
   include profile::dotnet_45
@@ -50,6 +51,7 @@ define profile::app (
   # should pick up:
   # customErrors
   # version
+  # cluster_name
   file { "${app_location}/Web.config":
     ensure  => present,
     content => template("profile/Web.Config.erb"),
